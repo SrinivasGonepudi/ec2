@@ -11,3 +11,14 @@ resource "aws_instance" "this" {
   vpc_security_group_ids = ["sg-013546b7eb9f4686b"]
   ebs_optimized          = "${var.ebs_optimized}"
 }
+
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/xvdf"
+  volume_id   = "${aws_ebs_volume.example.id}"
+  instance_id = "${aws_instance.this.id}"
+}
+
+resource "aws_ebs_volume" "example" {
+  availability_zone = "us-east-1"
+  size              = 2
+}
