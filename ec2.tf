@@ -12,7 +12,7 @@ resource "aws_instance" "this" {
   ebs_optimized          = "${var.ebs_optimized}"
 }
 
-resource "aws_volume_attachment" "ebs_att" {
+/*resource "aws_volume_attachment" "ebs_att" {
   device_name = "/dev/xvdf"
   volume_id   = "${aws_ebs_volume.example.id}"
   instance_id = "${aws_instance.this.id}"
@@ -21,4 +21,4 @@ resource "aws_volume_attachment" "ebs_att" {
 resource "aws_ebs_volume" "example" {
   availability_zone = "us-east-1a"
   size              = 2
-}
+}*/
